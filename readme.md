@@ -52,6 +52,7 @@ Applikationen er bygget med:
 - PDF.js til PDF-tekstekstraktion
 - OpenRouter API til AI-tekstanalyse
 - Tailwind CSS til styling
+- Favicon fra [https://gauger.io/fonticon/](https://gauger.io/fonticon/)
 
 ## Licens
 
