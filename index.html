@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>faktura-mojo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow p-6 space-y-6">
+        <h1 class="text-2xl font-bold">Faktura Mojo</h1>
+
+        <div>
+            <label class="block font-medium">OpenRouter API Nøgle <span class="font-normal text-sm text-gray-600">(opret
+                    en gratis nøgle hos <a class="underline" target="_blank"
+                        https://openrouter.ai/">openRouter</a>)</span></label>
+            <input id="apiKey" type="password" class="mt-1 w-full border rounded p-2"
+                placeholder="Indtast din API nøgle" />
+        </div>
+        <div>
+            <label class="block font-medium">AI Model <span class="font-normal text-sm text-gray-600">(find model -
+                    enten
+                    <a class="underline" href="href=" https://openrouter.ai/models?q=free">gratis</a> eller <a
+                        class="underline" href="href=" https://openrouter.ai/models">betalt</a> - hos
+                    <a target="_blank" class="underline" href="https://openrouter.ai">openRouter</a>)</span></label>
+            <input id="modelName" type="text" class="mt-1 w-full border rounded p-2" />
+        </div>
+
+        <div class="border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 rounded p-6 text-center cursor-pointer transition-colors duration-200 flex flex-col items-center justify-center"
+            id="dropZone">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-500 mb-2" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+            <p class="font-medium">Træk faktura her eller klik for at vælge fil</p>
+            <p class="text-sm text-gray-500 mt-1">Understøtter kun PDF-filer</p>
+            <input type="file" id="fileInput" accept="application/pdf" class="hidden" />
+        </div>
+
+        <!-- Loading overlay -->
+        <div id="loadingOverlay"
+            class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white p-6 rounded-lg shadow-xl flex flex-col items-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                <p id="loadingMessage" class="text-lg font-medium">Behandler dokument...</p>
+            </div>
+        </div>
+
+        <div id="resultArea" class="mt-6 hidden">
+            <h2 class="text-xl font-semibold mb-2">
+                Udtrukne data <span class="font-normal text-sm text-gray-600">(dobbelttjek altid – modellen gætter i
+                    sidste ende)</span>
+            </h2>
+            <table class="w-full table-auto border-collapse">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border px-2 py-1">FIK Kode</th>
+                        <th class="border px-2 py-1">Beløb</th>
+                        <th class="border px-2 py-1">Dato</th>
+                        <th class="border px-2 py-1">Beskrivelse</th>
+                        <th class="border px-2 py-1">Reg nr</th>
+                        <th class="border px-2 py-1">Konto nr</th>
+                    </tr>
+                </thead>
+                <tbody id="resultBody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script>
+        window.pdfJsLoaded = false;
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+            window.pdfJsLoaded = true;
+        }
+    </script>
+    <script src="js/pdf.js"></script>
+    <script src="js/openrouter.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
