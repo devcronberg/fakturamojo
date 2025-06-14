@@ -1,3 +1,6 @@
+import { extractTextFromPDF } from './pdf.js';
+import { getDefaultModel, callOpenRouter, getSystemPrompt } from './openrouter.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
@@ -60,8 +63,6 @@ function hideLoading() {
 
 async function handleFile(file) {
     try {
-        showLoading('Initialiserer PDF.js...');
-        await waitForPdfJs();
 
         showLoading('Udtrækker tekst fra PDF...');
         const text = await extractTextFromPDF(file);
@@ -76,7 +77,13 @@ async function handleFile(file) {
         }
 
         showLoading(`Analyserer dokument med AI (${model})...`);
-        const systemMessage = await getSystemPrompt();
+        let systemMessage = await getSystemPrompt();
+        // Indsæt dato og tid i system prompt
+        const now = new Date();
+        const dateStr = now.toISOString().slice(0, 10); // yyyy-mm-dd
+        const timeStr = now.toTimeString().slice(0, 5); // HH:MM
+        systemMessage = systemMessage.replace(/{{dato}}/gi, dateStr).replace(/{{tid}}/gi, timeStr);
+        console.log('System prompt:', systemMessage);
         const result = await callOpenRouter(key, systemMessage, text, model);
 
         try {

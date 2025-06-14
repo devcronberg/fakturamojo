@@ -1,8 +1,8 @@
-function getDefaultModel() {
+export function getDefaultModel() {
     return "deepseek/deepseek-chat-v3-0324:free";
 }
 
-async function callOpenRouter(apiKey, systemMessage, userMessage, model = "deepseek/deepseek-chat-v3-0324:free") {
+export async function callOpenRouter(apiKey, systemMessage, userMessage, model = "deepseek/deepseek-chat-v3-0324:free") {
     const url = 'https://openrouter.ai/api/v1/chat/completions';
 
     const response = await fetch(url, {
@@ -38,7 +38,7 @@ async function callOpenRouter(apiKey, systemMessage, userMessage, model = "deeps
     return data.choices[0].message.content.replace(/^```json\s*|^```|```$/gim, '').trim();
 }
 
-async function getSystemPrompt() {
+export async function getSystemPrompt() {
     const response = await fetch('prompts/systemprompt.txt');
     if (!response.ok) {
         throw new Error('Kunne ikke indlæse systemprompt.txt');

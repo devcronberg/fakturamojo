@@ -44,3 +44,5 @@ Du skal returnere følgende som **REN JSON** (ingen markdown, ingen forklaringer
 
 Hvis noget ikke findes, brug null som værdi.
 Svar **kun** med gyldig JSON – uden markdown, overskrifter eller forklaringer.
+
+Hvis du skal bruge dags dato er det {{dato}} og klokken er {{tid}}
