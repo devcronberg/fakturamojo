@@ -36,6 +36,17 @@ Disse oplysninger kan bruges til hurtigt at oprette betalinger ved at kopiere da
 ### Filtyper:
 - Applikationen understøtter **kun PDF-filer**
 
+## 🔒 Datasikkerhed
+
+- API-nøglen gemmes **kun lokalt** i din browser's localStorage, men sendes med til OpenRouter's API
+- PDF-filer behandles **udelukkende lokalt** i browseren ved hjælp af PDF.js
+- Den ekstraherede **tekst** fra PDF-filen sendes til OpenRouter's API for AI-analyse
+- **Selve PDF-filen** uploaderes aldrig til nogen server og forlader aldrig din computer
+- Der er **ingen serverdel** i applikationen - alt kører i din browser
+- Der foretages **ingen datalagring** udover den lokale API-nøgle og model-valg i localStorage
+
+**Vær opmærksom på:** Selvom PDF-filen forbliver på din computer, sendes den ekstraherede tekst til OpenRouter, hvor den kan blive behandlet af deres tjenester ifølge deres [privatlivspolitik](https://openrouter.ai/privacy).
+
 ## ⚠️ Ansvarsfraskrivelse
 
 **BRUG PÅ EGET ANSVAR!**
@@ -48,6 +59,7 @@ Disse oplysninger kan bruges til hurtigt at oprette betalinger ved at kopiere da
 ## Teknisk implementering
 
 Applikationen er bygget med:
+- VSCode og Github Copilot til udvikling
 - JavaScript (vanilla)
 - PDF.js til PDF-tekstekstraktion
 - OpenRouter API til AI-tekstanalyse
