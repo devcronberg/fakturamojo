@@ -1,5 +1,5 @@
 function getDefaultModel() {
-    return "google/gemma-3-27b-it:free";
+    return "deepseek/deepseek-chat-v3-0324:free";
 }
 
 async function callOpenRouter(apiKey, systemMessage, userMessage, model = "deepseek/deepseek-chat-v3-0324:free") {
