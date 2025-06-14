@@ -20,6 +20,55 @@ Disse oplysninger kan bruges til hurtigt at oprette betalinger ved at kopiere da
 3. AI-modellen analyserer teksten og identificerer relevante betalingsoplysninger
 4. Resultaterne vises i en overskuelig tabel
 
+## Prøv det selv!
+
+Du kan prøve applikationen direkte i din browser ved at besøge [Faktura Mojo på Github Pages](https://devcronberg.github.io/fakturamojo/). Husk at læse nedenstående omkring datasikkerhed før du bruger den.
+
+### Kør lokalt
+
+Du kan også køre applikationen lokalt på din egen computer ved at følge disse trin:
+
+1. **Download koden**
+   - **Metode 1 (GitHub)**: Klon repository med `git clone https://github.com/devcronberg/fakturamojo.git`
+   - **Metode 2 (ZIP)**: [Download ZIP-filen](https://github.com/devcronberg/fakturamojo/archive/refs/heads/main.zip) og udpak den til en mappe
+
+2. **Start en lokal webserver**
+   - Da applikationen bruger JavaScript-moduler og API-kald, kræver den en webserver (kan ikke køres direkte fra filsystemet)
+   - Den nemmeste metode er at bruge Visual Studio Code med Live Server:
+     1. [Download og installer Visual Studio Code](https://code.visualstudio.com/download) hvis du ikke allerede har det
+     2. Åbn VS Code og installer "Live Server" extension:
+        - Klik på Extensions ikonet i venstre sidebar (eller tryk `Ctrl+Shift+X`)
+        - Søg efter "Live Server" (af Ritwick Dey)
+        - Klik "Install"
+     3. Åbn mappen med Faktura Mojo-koden i VS Code
+     4. Klik på "Go Live" i nederste højre hjørne af VS Code
+     5. En browser åbnes automatisk med applikationen kørende på en lokal server (typisk http://127.0.0.1:5500)
+
+3. **Brug applikationen**
+   - Indtast din OpenRouter API-nøgle
+   - Vælg en AI-model
+   - Upload en PDF-faktura
+
+### Leg med koden og prompt
+
+Når du har projektet kørende lokalt, kan du nemt tilpasse og forbedre applikationen:
+
+1. **Rediger koden**
+   - HTML og JavaScript-filerne kan redigeres direkte i VS Code
+   - Live Server opdaterer automatisk browseren når du gemmer ændringer, så du straks kan se effekten
+   - Strukturen er enkel: `index.html`, `js/app.js`, `js/openrouter.js`, `js/pdf.js` og `prompts/systemprompt.txt`
+
+2. **Brug GitHub Copilot**
+   - Projektet indeholder en særlig `.github/copilot-instructions.md` fil, som hjælper GitHub Copilot med at forstå projektet
+   - Med en GitHub Copilot-konto (gratis op til et vist forbrug) kan du få intelligente kodeforslag
+   - Copilot vil have bedre kontekst om applikationen og kan hjælpe med at udvide funktionaliteten eller fikse problemer
+
+3. **Eksperimenter med prompt engineering**
+   - Prøv at justere systemprompten i `prompts/systemprompt.txt` for at ændre hvordan AI'en analyserer fakturaerne
+   - Test forskellige AI-modeller for at se hvilken der giver de bedste resultater
+   
+> 💡 **Tip**: Når du kører applikationen lokalt, får du den samme funktionalitet som på den offentlige version, men med fordelen af at kunne inspicere og ændre koden selv.
+
 ## Krav og opsætning
 
 ### Forudsætninger:
@@ -70,4 +119,19 @@ Applikationen er bygget med:
 
 Se [LICENSE](LICENSE) fil for licensoplysninger.
 
+## Issues og Pull Requests
+
+Dette projekt er open source, og alle er velkomne til at bidrage!
+
+- **Fejl og forbedringer:** Hvis du finder en fejl, har forslag til forbedringer eller ønsker nye funktioner, så opret gerne et issue på GitHub.
+- **Pull Requests:** Hvis du selv har rettet en fejl eller tilføjet en funktion, er du meget velkommen til at oprette en pull request (PR). Fork blot projektet, lav dine ændringer og send en PR – så kigger jeg på det hurtigst muligt.
+
+### Fremtidige Udviklingsmuligheder
+
+- Mulighed for at bruge en lokal model og undgå OpenRouter API
+- Mulighed for at gemme og eksportere udtrukne data
+- Forbedret fejlhåndtering ved dårlig PDF-kvalitet
+- Mulighed for batch-processering af flere fakturaer
+- Mulighed for direkte integration til betalingssystemer
+- Implementering af OCR til billeder og scannede dokumenter
 

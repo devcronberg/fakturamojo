@@ -79,9 +79,4 @@ Faktura Mojo er en webapplikation designet til at ekstrahere betalingsoplysninge
 - Ingen serverside datalagring eller -behandling
 - Al databehandling sker lokalt i browseren
 
-## Fremtidige Udviklingsmuligheder
-- Mulighed for at gemme og eksportere udtrukne data
-- Forbedret fejlhåndtering ved dårlig PDF-kvalitet
-- Mulighed for batch-processering af flere fakturaer
-- Mulighed for direkte integration til betalingssystemer
-- Implementering af OCR til billeder og scannede dokumenter
+
