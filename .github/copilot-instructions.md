@@ -4,9 +4,9 @@
 Faktura Mojo er en webapplikation designet til at ekstrahere betalingsoplysninger fra danske fakturaer og FIK-indbetalingskort ved hjælp af AI. Applikationen er udviklet som et single-page værktøj der kører client-side og bruger PDF.js til at ekstrahere tekst fra PDF-filer og OpenRouter API til at behandle denne tekst med AI-modeller.
 
 ## Teknologisk Stack
-- **Frontend**: Vanilla JavaScript uden frameworks
+- **Frontend**: Vanilla JavaScript uden frameworks (brug sidste nye version af JS - herunder brug af ES6-moduler hvor det er muligt)
 - **UI**: Tailwind CSS (via CDN) for styling
-- **PDF Processering**: PDF.js bibliotek (ekstern CDN)
+- **PDF Processering**: PDF.js bibliotek (ekstern CDN) i sidste nye version
 - **AI Integration**: OpenRouter API til at tilgå forskellige LLM-modeller
 
 ## Kernekomponenter
